@@ -349,6 +349,10 @@ class MysqlSchemaParser extends BaseSchemaParser
                 $foreignColumns = array();
                 $foreignTable = $database->getTable($ftbl, true);
 
+                if (!$foreignTable) {
+                    throw new Exception('Foreign table relation missing: ' . $ftbl);
+                }
+
                 foreach ($fcols as $fcol) {
                     $foreignColumns[] = $foreignTable->getColumn($fcol);
                 }

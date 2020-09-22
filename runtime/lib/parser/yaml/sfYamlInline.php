@@ -120,31 +120,32 @@ class sfYamlInline
    *
    * @return string The YAML string representing the PHP array
    */
-  protected static function dumpArray($value)
-  {
-    // array
-    $keys = array_keys($value);
-    if (
-      (1 == count($keys) && '0' == $keys[0])
-      ||
-      (count($keys) > 1 && array_reduce($keys, create_function('$v,$w', 'return (integer) $v + $w;'), 0) == count($keys) * (count($keys) - 1) / 2))
+    protected static function dumpArray($value)
     {
-      $output = array();
-      foreach ($value as $val) {
-        $output[] = self::dump($val);
-      }
+        // array
+        $keys = array_keys($value);
+        if (
+            (1 == count($keys) && '0' == $keys[0])
+            ||
+            (count($keys) > 1 && array_reduce($keys, function ($v, $w) use ($keys) {
+                    return (int)$v + (int)$w == count($keys) * (count($keys) - 1) / 2;
+                }))) {
+            $output = [];
+            foreach ($value as $val) {
+                $output[] = self::dump($val);
+            }
 
-      return sprintf('[%s]', implode(', ', $output));
+            return sprintf('[%s]', implode(', ', $output));
+        }
+
+        // mapping
+        $output = [];
+        foreach ($value as $key => $val) {
+            $output[] = sprintf('%s: %s', self::dump($key), self::dump($val));
+        }
+
+        return sprintf('{ %s }', implode(', ', $output));
     }
-
-    // mapping
-    $output = array();
-    foreach ($value as $key => $val) {
-      $output[] = sprintf('%s: %s', self::dump($key), self::dump($val));
-    }
-
-    return sprintf('{ %s }', implode(', ', $output));
-  }
 
   /**
    * Parses a scalar to a YAML string.
