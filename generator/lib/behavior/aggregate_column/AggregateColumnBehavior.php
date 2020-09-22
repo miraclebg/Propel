@@ -40,7 +40,7 @@ class AggregateColumnBehavior extends Behavior
         }
 
         // add the aggregate column if not present
-        if (!$this->getTable()->containsColumn($columnName)) {
+        if (!$this->getTable()->hasColumn($columnName)) {
             $column = $this->getTable()->addColumn(array(
                 'name'    => $columnName,
                 'type'    => 'INTEGER',

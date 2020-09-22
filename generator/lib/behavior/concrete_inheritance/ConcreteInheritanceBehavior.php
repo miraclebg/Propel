@@ -56,7 +56,7 @@ class ConcreteInheritanceBehavior extends Behavior
             if ($column->getName() == $this->getParameter('descendant_column')) {
                 continue;
             }
-            if ($table->containsColumn($column->getName())) {
+            if ($table->hasColumn($column->getName())) {
                 continue;
             }
             $copiedColumn = clone $column;

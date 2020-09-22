@@ -186,7 +186,7 @@ class PropelDateTimeTest extends PHPUnit_Framework_TestCase
         return array(
             // "1312960848" : Wed, 10 Aug 2011 07:20:48 GMT
             // "2011-08-10 09:20:48" : GMT+1 DST (= GMT +2)
-            'unix_timestamp'	=> array('1312960848', '2011-08-10 09:20:48'),
+//            'unix_timestamp'	=> array('1312960848', '2011-08-10 09:20:48'),
             // "1323517115" : Sat, 10 Dec 2011 11:38:35 GMT
             // "2011-12-10 12:38:35" : GMT +1
             'unix_timestamp'	=> array('1323517115', '2011-12-10 12:38:35'),

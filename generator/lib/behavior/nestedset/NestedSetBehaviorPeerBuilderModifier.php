@@ -420,7 +420,7 @@ public static function updateLoadedNodes(\$prune = null, PropelPDO \$con = null)
             $fields = array();
             foreach ($this->table->getPrimaryKey() as $k => $col) {
                 $fields[] = $this->builder->getColumnConstant($col);
-            };
+            }
             $script .= "
 
             // Loop on each instances in pool

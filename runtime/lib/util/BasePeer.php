@@ -291,7 +291,7 @@ class BasePeer
             $db->cleanupSQL($sql, $params, $criteria, $dbMap);
 
             $stmt = $con->prepare($sql);
-            $db->bindValues($stmt, $params, $dbMap, $db);
+            $db->bindValues($stmt, $params, $dbMap);
             $stmt->execute();
         } catch (Exception $e) {
             Propel::log($e->getMessage(), Propel::LOG_ERR);
@@ -434,7 +434,7 @@ class BasePeer
                 $stmt = $con->prepare($sql);
 
                 // Replace ':p?' with the actual values
-                $db->bindValues($stmt, $params, $dbMap, $db);
+                $db->bindValues($stmt, $params, $dbMap);
 
                 $stmt->execute();
 
@@ -669,7 +669,7 @@ class BasePeer
 
         $orderBy = $criteria->getOrderByColumns();
         $groupBy = $criteria->getGroupByColumns();
-        $ignoreCase = $criteria->isIgnoreCase();
+//        $ignoreCase = $criteria->isIgnoreCase();
 
         // get the first part of the SQL statement, the SELECT part
         $selectSql = $db->createSelectSqlPart($criteria, $fromClause);
@@ -847,7 +847,7 @@ class BasePeer
 
         // APPLY OFFSET & LIMIT to the query.
         if ($criteria->getLimit() || $criteria->getOffset()) {
-            $db->applyLimit($sql, $criteria->getOffset(), $criteria->getLimit(), $criteria);
+            $db->applyLimit($sql, $criteria->getOffset(), $criteria->getLimit());
         }
 
         return $sql;

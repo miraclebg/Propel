@@ -371,7 +371,7 @@ class PropelPager implements Countable, Iterator
      */
     public function getPrevLinks($range = 5)
     {
-        $total = $this->getTotalPages();
+//        $total = $this->getTotalPages();
         $start = $this->getPage() - 1;
         $end = $this->getPage() - $range;
         $first = $this->getFirstPage();
@@ -395,7 +395,7 @@ class PropelPager implements Countable, Iterator
      */
     public function getNextLinks($range = 5)
     {
-        $total = $this->getTotalPages();
+//        $total = $this->getTotalPages();
         $start = $this->getPage() + 1;
         $end = $this->getPage() + $range;
         $last = $this->getLastPage();

@@ -1523,7 +1523,7 @@ abstract class " . $this->getClassname() . " extends " . $this->getPeerBuilder()
             $fields = array();
             foreach ($table->getPrimaryKey() as $k => $col) {
                 $fields[] = $this->getColumnConstant($col);
-            };
+            }
             $script .= "
 
                 // Loop on each instances in pool

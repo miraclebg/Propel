@@ -1365,7 +1365,7 @@ class Column extends XMLElement
     public function getValidator()
     {
         foreach ($this->getTable()->getValidators() as $validator) {
-            if ($validator->getColumn() == $this) {
+            if ($validator->getColumn() === $this) {
                 return $validator;
             }
         }

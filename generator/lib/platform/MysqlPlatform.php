@@ -174,7 +174,7 @@ SET FOREIGN_KEY_CHECKS = 1;
             //if the primary key consists of multiple columns and if the first is not the autoIncrement one. So
             //this push the autoIncrement column to the first position if its not already.
             $autoIncrement = $table->getAutoIncrementPrimaryKey();
-            if ($autoIncrement && $keys[0] != $autoIncrement) {
+            if ($autoIncrement && $keys[0] !== $autoIncrement) {
                 $idx = array_search($autoIncrement, $keys);
                 if ($idx !== false) {
                     unset($keys[$idx]);
@@ -734,6 +734,7 @@ ALTER TABLE %s
     {
         // mysql_escape_string doesn't work in PHP >= 5.4
         if (version_compare(PHP_VERSION, '5.4', '<') && function_exists('mysql_escape_string')) {
+            /** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection */
             return mysql_escape_string($text);
         } else {
             return addslashes($text);

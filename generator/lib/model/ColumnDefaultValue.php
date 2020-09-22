@@ -100,7 +100,7 @@ class ColumnDefaultValue
         if ($this->getType() != $other->getType()) {
             return false;
         }
-        if ($this == $other) {
+        if ($this === $other) {
             return true;
         }
         // special case for current timestamp
